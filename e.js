@@ -11,7 +11,13 @@ const esyalar = {
     "Klima": "3000",
     "Ütü": "2000",
     "Sebil": "100",
-    "Serinlik": "50"
+    "Serinlik": "50",
+    "LED Ampul" : "10",
+    "Normal Ampul" : "75",
+    "Heater" : "3250",
+    "Soba" : "750",
+    "Hidrofor" : "650"
+
 };
 
 basliklar = ["Eşya", "Günde<br>Kaç<br>Saat", "Ayda<br>kaç<br>gün?", "Toplam<br>kWs"];
