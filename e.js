@@ -107,19 +107,34 @@ for (e in esyalar){
         }
         
         if(toplamlari > 250 && toplamlari < 500){
-            fatura.innerText = (toplamlari * 2.7) + " TL";
+        var ilk = 250 * 0.9873;
+        var ikinci = (toplamlari - 250) * 2.7;
+            fatura.innerText = Number(ilk) + Number(ikinci) + " TL";
         }
 
         if(toplamlari > 500 && toplamlari < 750){
-            fatura.innerText = (toplamlari * 2.95) + " TL";
+        var ilk = 250 * 0.9873;
+        var ikinci = 250 * 2.7;
+        var ucuncu = (toplamlari - 500) * 2.95;
+            fatura.innerText = Number(ilk) + Number(ikinci) + Number(ucuncu) + " TL";
         }
 
         if(toplamlari > 750 && toplamlari < 1000){
-            fatura.innerText = (toplamlari * 3.25) + " TL";
+        var ilk = 250 * 0.9873;
+        var ikinci = 250 * 2.7;
+        var ucuncu = 250 * 2.95;
+        var dorduncu = (toplamlari - 750) * 3.25;
+            fatura.innerText = Number(ilk) + Number(ikinci) + Number(ucuncu) + Number (dorduncu) + " TL";
+        
         }
         
         if(toplamlari > 1000){
-            fatura.innerText = (toplamlari * 4) + " TL";
+        var ilk = 250 * 0.9873;
+        var ikinci = 250 * 2.7;
+        var ucuncu = 250 * 2.95;
+        var dorduncu = 250 * 3.25;
+        var besinci = (toplamlari - 1000) * 4;
+            fatura.innerText = Number(ilk) + Number(ikinci) + Number(ucuncu) + Number (dorduncu) + Number (besinci) + " TL";
         }
 
         
