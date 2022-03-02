@@ -14,7 +14,7 @@ const esyalar = {
     "Serinlik": "50"
 };
 
-basliklar = ["Eşya", "Günde Kaç Saat", "Ayda kaç gün?", "Toplam kWs"];
+basliklar = ["Eşya", "Günde<br>Kaç<br>Saat", "Ayda<br>kaç<br>gün?", "Toplam<br>kWs"];
 
 
 var genelTuketim = {};
