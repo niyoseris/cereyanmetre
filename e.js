@@ -39,7 +39,7 @@ for (e in esyalar){
     gundeKacSaat.max = "24";
     gundeKacSaat.value= "0";
     gundeKacSaat.className = "elems";
-    gundeKacSaat.step ="0.5";
+    gundeKacSaat.step ="0.25";
     gundeKacSaat.name = e;
     gundeKacSaat.id = e + "ranc";
     gundeKacSaat.oninput = function (){
@@ -82,6 +82,8 @@ for (e in esyalar){
     function toplaBak(){
         toplamlari = '';
 
+        var fatura = document.getElementById("toplamFatura");
+
         for(ee in genelTuketim){
             toplamlari = Number(genelTuketim[ee]) + Number(toplamlari);
         }
@@ -93,6 +95,32 @@ for (e in esyalar){
         } else {
             document.body.style.background = "#FFFFFF";
         }
+
+        if(toplamlari < 250){
+            fatura.innerHTML = (toplamlari * 0.9873) + " TL";
+        }
+        
+        if(toplamlari > 250 && toplamlari < 500){
+            fatura.innerText = (toplamlari * 2.7) + " TL";
+        }
+
+        if(toplamlari > 500 && toplamlari < 750){
+            fatura.innerText = (toplamlari * 2.95) + " TL";
+        }
+
+        if(toplamlari > 750 && toplamlari < 1000){
+            fatura.innerText = (toplamlari * 3.25) + " TL";
+        }
+        
+        if(toplamlari > 1000){
+            fatura.innerText = (toplamlari * 4) + " TL";
+        }
+
+        
+        
+
+        
+        
         
     }
 
@@ -133,7 +161,13 @@ for (e in esyalar){
 var toplamText = document.createElement("span");
 toplamText.id = "toplamKw";
 toplamText.className = "toplam";
-toplamText.innerHTML = "0";
+toplamText.innerHTML = "0 kWs";
+
+var toplamFatura = document.createElement("span");
+toplamFatura.id = "toplamFatura";
+toplamFatura.className = "toplamFatura";
+toplamFatura.innerHTML = "0 TL";
 
 document.getElementById("tableDiv").appendChild(t);
 document.getElementById("toplamDiv").appendChild(toplamText);
+document.getElementById("toplamFaturaDiv").appendChild(toplamFatura);
