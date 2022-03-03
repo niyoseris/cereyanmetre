@@ -196,7 +196,7 @@ direktKw.type = "number”;
 var kwb = document.createElement("button");
 kwb.onclick = function() {
     var kwsi = document.getElementById("dkw").value;
-    toplaBak(kwsi)
+    toplaBak(kwsi);
 }
 kwb.value = "Hade Rasgele";
 
