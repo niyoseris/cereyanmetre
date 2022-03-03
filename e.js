@@ -59,7 +59,7 @@ for (e in esyalar){
         genelTuketim[this.name] = esyaToplam;
         console.log(genelTuketim);
 
-        toplaBak();
+        toplaBak(0);
 
     }
     
@@ -81,21 +81,28 @@ for (e in esyalar){
         genelTuketim[this.name] = esyaToplam;
         console.log(genelTuketim);
 
-        toplaBak();
+        toplaBak(0);
 
 
         
     }
     
     
-    function toplaBak(){
-        toplamlari = '';
-
+    function toplaBak(mm){
+        
         var fatura = document.getElementById("toplamFatura");
 
-        for(ee in genelTuketim){
-            toplamlari = Number(genelTuketim[ee]) + Number(toplamlari);
+
+        if(mm == 0){
+            toplamlari = '';
+        
+            for(ee in genelTuketim){
+                toplamlari = Number(genelTuketim[ee]) + Number(toplamlari);
+            }
+        } else {
+            toplamlari = mm;
         }
+
         
         document.getElementById("toplamKw").innerHTML = toplamlari + " kWs";
 
@@ -182,6 +189,17 @@ for (e in esyalar){
     
 }
 
+var direktKw = document.createElement("input");
+direktKw.id = "dkw”;
+direktKw.type = "number”;
+
+var kwb = document.createElement("button");
+kwb.onclick = function() {
+    var kwsi = document.getElementById("dkw").value;
+    toplaBak(kwsi)
+}
+kwb.value = "Hade Rasgele";
+
 var toplamText = document.createElement("span");
 toplamText.id = "toplamKw";
 toplamText.className = "toplam";
@@ -195,3 +213,5 @@ toplamFatura.innerHTML = "0 TL";
 document.getElementById("tableDiv").appendChild(t);
 document.getElementById("toplamDiv").appendChild(toplamText);
 document.getElementById("toplamFaturaDiv").appendChild(toplamFatura);
+document.body.appendChild(direktKw);
+document.body.appendChild(kwb);
