@@ -18,7 +18,8 @@ const esyalar = {
     "Soba" : "750",
     "Hidrofor" : "650",
     "Fırın" : "3250",
-    "Kahve Makinası" : "750"
+    "Kahve Makinası" : "750",
+    "Su Motoru" : "750"
 
 };
 
