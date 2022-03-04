@@ -1,4 +1,1 @@
-# elektrikmetre
-# elektrikmetre
-# elektrikmetre
-# elektrikmetre
+Amman çarpılmayın!
