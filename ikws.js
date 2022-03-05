@@ -67,7 +67,7 @@ function toplaBak(mm){
     
     document.getElementById("toplamKw").innerHTML = toplamlari + " kWs";
     
-    if(toplamlari>250){
+    if(toplamlari>1000){
         document.body.style.background = "#FF0000";
     } else {
         document.body.style.background = "#FFFFFF";
