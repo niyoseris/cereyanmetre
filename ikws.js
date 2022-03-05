@@ -194,7 +194,7 @@ for (e in esyalar){
     esyaToplamKws.className="elems";
     
     var esyaAdi = document.createElement("span");
-    esyaAdi.innerHTML = e;
+    esyaAdi.innerHTML = e.replace(/ /g, "<br>");
     esyaAdi.className = "elems";
     
     let r = t.insertRow();
