@@ -36,7 +36,7 @@ const esyalar = {
 
 };
 
-basliklar = ["Eşya", "Günde (Saat : Dakika)", "Ayda<br>kaç<br>gün?", "Toplam<br>kWs"];
+basliklar = ["Eşya", "Günde<br>(Saat : Dakika)", "Ayda<br>kaç<br>gün?", "Toplam<br>kWs"];
 
 
 var genelTuketim = {};
