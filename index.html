@@ -8,20 +8,42 @@
     <title>Elektrikmetre</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HQZVJ7J76"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2HQZVJ7J76');
-</script>
-
+    
 </head>
 <body>
     
     <center>
+
+
+        <div class="lisda">
+            
+        <span>Eşya :
+        <select id="sel" onchange="sec()" class="selec">
+        </select>
+        </span>
+
+        <span> kW Tüketimi
+        <input type="number" id="bilinenKw" min="0" class="elems" value="500">
+        kWs
+        </span>
+        <span>
+        Günlük Çalışma Süresi:
+        <input type="number" id="gundeKacSaat" value="0" max="24" min="0" class="elems">
+        Saat
+        <input type="number" id="gundeKacDakika" value="0" max="59" min="0" class="elems">
+        Dakika
+        </span>
+        <span>
+        Aylık Çalışma Sıklığı
+        <input type="number" id="aydaKacGun" max="31" value="0" min="0" class="elems">
+        Gün
+        </span>
+        <span>
+            <input type="button" value="EKLE" onclick="selBak()">
+        </span>
+        
+        </div>
+
         <br>
         
         
@@ -46,26 +68,27 @@
         
         <br>
         <br>
-        <div>
-            Elektrikmetre<br>
-            Gayrı resmi Kıb-Tek yeni tarife hesaplama gereci by Niyazi Çoban Jr.
-            <br>
-            2022
-        
-            <br>
-            <br>
-            <i>amman çarpılmayın</i>
-        
-        </div>
-        </center>
-        
+    </center>
+
+
+        <div class="infoniyo">
+        Elektrikmetre<br>
+        Gayrı resmi Kıb-Tek yeni tarife hesaplama gereci by Niyazi Çoban Jr.
+        <br>
+        2022
+    
+        <br>
+        <br>
+        <i>amman çarpılmayın</i>
+    
         <li>
             Elektrik tüketim değerleri ortalamadır.
         </li>
         <li>
             Sosyal medyadan rahatça ulaşılabilirim. Görüş öneri ve işbirliği için DM zsdsfdsf :D 
         </li>
-        
+        </body>
+        </div>
         <script src="ikws.js"></script>
             
 </body>
@@ -88,7 +111,15 @@
     .elems{
         white-space: nowrap;
         table-layout: fixed;
-        margin: 1%;
+        text-align: center;
+        font-size: large;
+        padding: 0.2%;
+        width: 5%;
+    }
+    
+    select{
+        font-size: large;
+        padding: 0.2%;
     }
 
     .sec{
@@ -112,7 +143,22 @@
         width: 20%;
         margin: 2%;
     }
+
+    span{
+        margin: 1%;
+    }
+
+    .lisda{
+        margin: 5%;
+    }
+
+    .infoniyo{
+        margin-top: 90%;
+    }
     
+    button{
+        font-size: large;
+    }
 </style>
 
 </html>

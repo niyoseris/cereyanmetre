@@ -2,9 +2,7 @@ const esyalar = {
     "Çamaşır Makinası":"500",
     "Saç Kurutma Makinası": "1200",
     "Buzluk": "120",
-    "2. Buzluk" : "120",
-    "3. Buzluk" : "120",
-    "Diffiriz" : "200",
+    "Dipfiriz" : "200",
     "Bulaşık Makinası": "1800",
     "Kurutma Makinası": "3000",
     "Mikrodalga":"1200",
@@ -12,9 +10,6 @@ const esyalar = {
     "Kettle": "1200",
     "Şofben": "6000",
     "Klima": "3000",
-    "2. Klima": "3000",
-    "3. Klima" : "3000",
-    "4. Klima" : "3000",
     "Ütü": "2000",
     "Sebil": "100",
     "Serinlik": "50",
@@ -22,7 +17,6 @@ const esyalar = {
     "Normal Ampul" : "75",
     "Heater" : "3250",
     "Soba" : "750",
-    "İkinci Soba" : "750",
     "Hidrofor" : "650",
     "Fırın" : "3250",
     "Kahve Makinası" : "750",
@@ -37,6 +31,7 @@ var genelTuketim = {};
 
 
 let t = document.createElement("table");
+var sel = document.getElementById("sel");
 
 toplam = 0;
 
@@ -44,177 +39,78 @@ for (baslik of basliklar){
     
     var hea = document.createElement("th");
     hea.innerHTML = baslik;
-    hea.className = "elems";
     t.appendChild(hea);
 }
 
+
 for (e in esyalar){
-    var gundeKacSaat = document.createElement("input");
-    gundeKacSaat.type ="number";
-    gundeKacSaat.min = "0";
-    gundeKacSaat.max = "24";
-    gundeKacSaat.value= "0";
-    gundeKacSaat.className = "sec";
-    gundeKacSaat.step ="1";
-    gundeKacSaat.name = e;
-    gundeKacSaat.id = e + "ranc";
-    gundeKacSaat.oninput = function (){
-        var esyaToplam = (this.value + (document.getElementById(this.name + "dakika").value / 60)) * esyalar[this.name] * document.getElementById(this.name + "ayda").value / 1000;
 
-        document.getElementById(this.name +"kws").innerHTML = esyaToplam;
+    var selOpt = document.createElement("option");
+    selOpt.text = e;
+    sel.add(selOpt);
+}
 
-        genelTuketim[this.name] = esyaToplam;
-        console.log(genelTuketim);
+    
+function toplaBak(mm){
+    
+        var fatura = document.getElementById("toplamFatura");
 
-        toplaBak(0);
-
+        if(mm == 0){
+        toplamlari = '';
+    
+        for(ee in genelTuketim){
+            toplamlari = Number(genelTuketim[ee]) + Number(toplamlari);
+        }
+        }else{
+            toplamlari = mm;
+        }
+    
+    document.getElementById("toplamKw").innerHTML = toplamlari + " kWs";
+    
+    if(toplamlari>250){
+        document.body.style.background = "#FF0000";
+    } else {
+        document.body.style.background = "#FFFFFF";
     }
 
-    var gundeKacDakika = document.createElement("input");
-    gundeKacDakika.type ="number";
-    gundeKacDakika.min = "0";
-    gundeKacDakika.max = "59";
-    gundeKacDakika.value= "0";
-    gundeKacDakika.className = "sec";
-    gundeKacDakika.step ="1";
-    gundeKacDakika.name = e;
-    gundeKacDakika.id = e + "dakika";
-    gundeKacDakika.oninput = function (){
-        var esyaToplam = (document.getElementById(this.name + "ranc").value +  (this.value / 60)) * esyalar[this.name] * document.getElementById(this.name + "ayda").value / 1000;
-
-        document.getElementById(this.name +"kws").innerHTML = esyaToplam;
-
-        genelTuketim[this.name] = esyaToplam;
-        console.log(genelTuketim);
-
-        toplaBak(0);
-
+    if(toplamlari <= 250){
+        fatura.innerHTML = (toplamlari * 0.9873) + " TL";
     }
     
-    var aydaKacGun = document.createElement("input");
-    aydaKacGun.type ="number";
-    aydaKacGun.min = "0";
-    aydaKacGun.max = "31";
-    aydaKacGun.className = "sec";
-    aydaKacGun.step = "0";
-    aydaKacGun.name = e;
-    aydaKacGun.id = e + "ayda";
-    aydaKacGun.value = "0";
-    aydaKacGun.oninput = function (){
-        var esyaToplam = this.value * esyalar[this.name] * (document.getElementById(this.name + "ranc").value + (document.getElementById(this.name + "dakika").value / 60)) / 1000;
-
-        document.getElementById(this.name +"kws").innerHTML = esyaToplam;
-        
-        genelTuketim[this.name] = esyaToplam;
-        console.log(genelTuketim);
-
-        toplaBak(0);
-
-
-        
-    }
-    
-    
-    function toplaBak(mm){
-        
-            var fatura = document.getElementById("toplamFatura");
-
-            if(mm == 0){
-            toplamlari = '';
-        
-            for(ee in genelTuketim){
-                toplamlari = Number(genelTuketim[ee]) + Number(toplamlari);
-            }
-          }else{
-                toplamlari = mm;
-            }
-        
-        document.getElementById("toplamKw").innerHTML = toplamlari + " kWs";
-      
-        if(toplamlari>250){
-            document.body.style.background = "#FF0000";
-        } else {
-            document.body.style.background = "#FFFFFF";
-        }
-
-        if(toplamlari <= 250){
-            fatura.innerHTML = (toplamlari * 0.9873) + " TL";
-        }
-        
-        if(toplamlari >= 250 && toplamlari <= 500){
-        var ilk = 250 * 0.9873;
-        var ikinci = (toplamlari - 250) * 2.7;
-            fatura.innerText = Number(ilk) + Number(ikinci) + " TL";
-        }
-
-        if(toplamlari >= 500 && toplamlari <= 750){
-        var ilk = 250 * 0.9873;
-        var ikinci = 250 * 2.7;
-        var ucuncu = (toplamlari - 500) * 2.95;
-            fatura.innerText = Number(ilk) + Number(ikinci) + Number(ucuncu) + " TL";
-        }
-
-        if(toplamlari >= 750 && toplamlari <= 1000){
-        var ilk = 250 * 0.9873;
-        var ikinci = 250 * 2.7;
-        var ucuncu = 250 * 2.95;
-        var dorduncu = (toplamlari - 750) * 3.25;
-            fatura.innerText = Number(ilk) + Number(ikinci) + Number(ucuncu) + Number (dorduncu) + " TL";
-        
-        }
-        
-        if(toplamlari >= 1000){
-        var ilk = 250 * 0.9873;
-        var ikinci = 250 * 2.7;
-        var ucuncu = 250 * 2.95;
-        var dorduncu = 250 * 3.25;
-        var besinci = (toplamlari - 1000) * 4;
-            fatura.innerText = Number(ilk) + Number(ikinci) + Number(ucuncu) + Number (dorduncu) + Number (besinci) + " TL";
-        }
-
-        
-        
-
-        
-        
-        
+    if(toplamlari >= 250 && toplamlari <= 500){
+    var ilk = 250 * 0.9873;
+    var ikinci = (toplamlari - 250) * 2.7;
+        fatura.innerText = Number(ilk) + Number(ikinci) + " TL";
     }
 
+    if(toplamlari >= 500 && toplamlari <= 750){
+    var ilk = 250 * 0.9873;
+    var ikinci = 250 * 2.7;
+    var ucuncu = (toplamlari - 500) * 2.95;
+        fatura.innerText = Number(ilk) + Number(ikinci) + Number(ucuncu) + " TL";
+    }
 
-    var esyaToplamKws = document.createElement("span");
-    esyaToplamKws.id = e +"kws";
-    esyaToplamKws.innerHTML = "0";
-    esyaToplamKws.name="esyaToplam";
-    esyaToplamKws.className="elems";
+    if(toplamlari >= 750 && toplamlari <= 1000){
+    var ilk = 250 * 0.9873;
+    var ikinci = 250 * 2.7;
+    var ucuncu = 250 * 2.95;
+    var dorduncu = (toplamlari - 750) * 3.25;
+        fatura.innerText = Number(ilk) + Number(ikinci) + Number(ucuncu) + Number (dorduncu) + " TL";
     
-    var esyaAdi = document.createElement("span");
-    esyaAdi.innerHTML = e.replace(/ /g, "<br>");
-    esyaAdi.className = "elems";
+    }
     
-    let r = t.insertRow();
-    
-    let es = r.insertCell();
-    es.className ="elems";
-    
-    let d = r.insertCell();
-    d.className = "elems";
-    
-    let o = r.insertCell();
-    o.className = "elems";
+    if(toplamlari >= 1000){
+    var ilk = 250 * 0.9873;
+    var ikinci = 250 * 2.7;
+    var ucuncu = 250 * 2.95;
+    var dorduncu = 250 * 3.25;
+    var besinci = (toplamlari - 1000) * 4;
+        fatura.innerText = Number(ilk) + Number(ikinci) + Number(ucuncu) + Number (dorduncu) + Number (besinci) + " TL";
+    }
 
-    
-    let g = r.insertCell();
-    g.className = "elems";
-    
-    
-    es.appendChild(esyaAdi);
-    d.appendChild(gundeKacSaat);
-    d.append(" : ");
-    d.appendChild(gundeKacDakika);
-    g.appendChild(esyaToplamKws);
-    o.appendChild(aydaKacGun);
     
 }
+
 
 
 var toplamText = document.createElement("span");
@@ -251,3 +147,47 @@ document.getElementById("direktKw").appendChild(cc);
 document.getElementById("direktKw").appendChild(kwb);
 
 
+
+function sec(){
+    bilinenKw.value = esyalar[sel.value];
+}
+
+
+function selBak(){
+
+    var esya = document.getElementById("sel").value;
+    var kacSaat = document.getElementById("gundeKacSaat").value;
+    var kacDakika = document.getElementById("gundeKacDakika").value;
+    var kacGun = document.getElementById("aydaKacGun").value;
+
+    var esyaToplam = ((esyalar[esya] * (Number(kacSaat) + (Number(kacDakika) / 60))) * kacGun) / 1000;
+
+    let r = t.insertRow();
+    r.id = esya + Math.floor(Date.now() * 1000);
+
+    let esyaCell = r.insertCell();
+    esyaCell.innerHTML = esya;
+
+    let saatDakikaCell = r.insertCell();
+    saatDakikaCell.innerHTML = kacSaat + " saat " + kacDakika + " dakika";
+
+    let gunCell = r.insertCell();
+    gunCell.innerHTML = kacGun;
+
+    let kwCell = r.insertCell();
+    kwCell.innerHTML = esyaToplam;
+    genelTuketim[r.id] = esyaToplam;
+    toplaBak(0);
+
+    let silCell = r.insertCell();
+    let silBut = document.createElement("button");
+    silBut.innerText = "sil";
+    silBut.onclick = function() {
+        t.deleteRow(this.parentNode.parentNode.rowIndex);
+        delete genelTuketim[r.id];
+        toplaBak(0);
+    }
+    silCell.append(silBut);
+    t.insertRow(r);
+
+}
