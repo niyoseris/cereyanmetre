@@ -36,7 +36,7 @@ const esyalar = {
 
 };
 
-basliklar = ["Eşya", "Günde<br>Kaç<br>Saat", "Ayda<br>kaç<br>gün?", "Toplam<br>kWs"];
+basliklar = ["Eşya", "Günde (Saat : Dakika)", "Ayda<br>kaç<br>gün?", "Toplam<br>kWs"];
 
 
 var genelTuketim = {};
@@ -215,9 +215,8 @@ for (e in esyalar){
     
     es.appendChild(esyaAdi);
     d.appendChild(gundeKacSaat);
-    d.append(" saat   ");
+    d.append(" : ");
     d.appendChild(gundeKacDakika);
-    d.append(" dakika ");
     g.appendChild(esyaToplamKws);
     o.appendChild(aydaKacGun);
     
