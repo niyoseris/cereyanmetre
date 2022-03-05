@@ -29,51 +29,54 @@
         veya
 
         <div class="lisda">
-        <table>
+        <table class="lisda">
             <tr>
                 <td>
-                    <span>Eşya :
-                        <select id="sel" onchange="sec()" class="selec">
-                        </select>
-                        </span>
+                    Eşya :
+                </td>
+
+                <td>   
+                    <select id="sel" onchange="sec()" class="selec">
+                    </select>
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    <span> kW Tüketimi
-                        <input type="number" id="bilinenKw" min="0" class="elems" value="500">
-                        kWs
-                    </span>
+                    kW Tüketimi
+                </td>
+                <td>
+                    <input type="number" id="bilinenKw" min="0" class="elemes" value="500"> kws
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>
                         Günlük Çalışma Süresi:
-                        <input type="number" id="gundeKacSaat" value="0" max="24" min="0" class="elems">
+                </td>
+                <td>
+                        <input type="number" id="gundeKacSaat" value="0" max="24" min="0" class="elemes">
                         Saat
-                        <input type="number" id="gundeKacDakika" value="0" max="59" min="0" class="elems">
+                        <input type="number" id="gundeKacDakika" value="0" max="59" min="0" class="elemes">
                         Dakika
-                    </span>
                 </td>
             </tr>
 
             <tr>
                 <td>
-
-                    <span>
+                    
                     Aylık Çalışma Sıklığı
-                    <input type="number" id="aydaKacGun" max="31" value="0" min="0" class="elems">
+                </td>
+                <td>
+                    <input type="number" id="aydaKacGun" max="31" value="0" min="0" class="elemes">
                     Gün
                     </span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>
-                        <input type="button" value="EKLE" onclick="selBak()">
-                    </span>
+            
+                        <input type="button" value="EKLE" class="butto" onclick="selBak()">
+            
                 </td>
             </tr>
         </table>
@@ -81,7 +84,7 @@
         <br>
         
         </div>
-        
+
         <div id="tableDiv">
             
         </div>
@@ -121,25 +124,33 @@
         width: 100%;
         margin-left: auto;
         margin-right: auto;
+        text-align: center;
     }
 
     tr, td{
         padding: 1%;
-        text-align: center;
     }
+
+    
     
     .elems{
         white-space: nowrap;
         table-layout: fixed;
         text-align: center;
         font-size: large;
-        padding: 0.2%;
-        width: 5%;
     }
     
+    .elemes{
+        white-space: nowrap;
+        table-layout: fixed;
+        text-align: center;
+        font-size: large;
+        padding: 1%;
+    }
+
     select{
         font-size: large;
-        padding: 0.2%;
+        padding: 1%;
     }
 
     .sec{
@@ -167,13 +178,22 @@
 
     .lisda{
         margin: 1%;
+        width: 80%;
+        text-align: left;
     }
+
 
     .infoniyo{
         margin-top: 90%;
     }
     
     button{
+        font-size: large;
+        
+    }
+
+    .butto{
+        padding: 2%;
         font-size: large;
     }
 </style>
