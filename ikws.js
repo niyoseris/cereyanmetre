@@ -60,7 +60,7 @@ for (e in esyalar){
     gundeKacSaat.min = "0";
     gundeKacSaat.max = "24";
     gundeKacSaat.value= "0";
-    gundeKacSaat.className = "elems";
+    gundeKacSaat.className = "sec";
     gundeKacSaat.step ="1";
     gundeKacSaat.name = e;
     gundeKacSaat.id = e + "ranc";
@@ -81,7 +81,7 @@ for (e in esyalar){
     gundeKacDakika.min = "0";
     gundeKacDakika.max = "59";
     gundeKacDakika.value= "0";
-    gundeKacDakika.className = "elems";
+    gundeKacDakika.className = "sec";
     gundeKacDakika.step ="1";
     gundeKacDakika.name = e;
     gundeKacDakika.id = e + "dakika";
@@ -101,7 +101,7 @@ for (e in esyalar){
     aydaKacGun.type ="number";
     aydaKacGun.min = "0";
     aydaKacGun.max = "31";
-    aydaKacGun.className = "elems";
+    aydaKacGun.className = "sec";
     aydaKacGun.step = "0";
     aydaKacGun.name = e;
     aydaKacGun.id = e + "ayda";
