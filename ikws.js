@@ -24,7 +24,7 @@ const esyalar = {
 
 };
 
-basliklar = ["Eşya", "Günde<br>(Saat : Dakika)", "Ayda<br>kaç<br>gün?", "Toplam<br>kWs"];
+basliklar = ["Eşya", "Günde", "Ayda", "Toplam<br>kWs"];
 
 
 var genelTuketim = {};
@@ -166,10 +166,10 @@ function selBak(){
     r.id = esya + Math.floor(Date.now() * 1000);
 
     let esyaCell = r.insertCell();
-    esyaCell.innerHTML = esya;
+    esyaCell.innerHTML = esya.replace(/ /g, "<br>");
 
     let saatDakikaCell = r.insertCell();
-    saatDakikaCell.innerHTML = kacSaat + " saat " + kacDakika + " dakika";
+    saatDakikaCell.innerHTML = kacSaat + " saat <br>" + kacDakika + " dakika";
 
     let gunCell = r.insertCell();
     gunCell.innerHTML = kacGun;
@@ -182,6 +182,7 @@ function selBak(){
     let silCell = r.insertCell();
     let silBut = document.createElement("button");
     silBut.innerText = "sil";
+    silBut.className = "butto";
     silBut.onclick = function() {
         t.deleteRow(this.parentNode.parentNode.rowIndex);
         delete genelTuketim[r.id];
