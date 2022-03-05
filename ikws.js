@@ -150,6 +150,9 @@ document.getElementById("direktKw").appendChild(kwb);
 
 function sec(){
     bilinenKw.value = esyalar[sel.value];
+    document.getElementById("gundeKacSaat").value = 0;
+    document.getElementById("gundeKacDakika").value = 0;
+    document.getElementById("aydaKacGun").value = 0;
 }
 
 
