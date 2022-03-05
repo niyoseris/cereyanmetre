@@ -8,7 +8,16 @@
     <title>Elektrikmetre</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-221889072-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-221889072-1');
+    </script>
+
 </head>
 <body>
     
@@ -18,6 +27,9 @@
         <br>
         <div id="toplamDiv">
         </div>
+        <br>
+        <br>
+
         
         <div id="toplamFaturaDiv">
         </div>
@@ -51,7 +63,7 @@
             </tr>
             <tr>
                 <td>
-                        Günlük Çalışma Süresi:
+                        Günlük Çalışma:
                 </td>
                 <td>
                         <input type="number" id="gundeKacSaat" value="0" max="24" min="0" class="elemes">
@@ -64,7 +76,7 @@
             <tr>
                 <td>
                     
-                    Aylık Çalışma Sıklığı
+                    Aylık Çalışma
                 </td>
                 <td>
                     <input type="number" id="aydaKacGun" max="31" value="0" min="0" class="elemes">
