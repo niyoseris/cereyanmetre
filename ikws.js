@@ -2,6 +2,9 @@ const esyalar = {
     "Çamaşır Makinası":"500",
     "Saç Kurutma Makinası": "1200",
     "Buzluk": "120",
+    "Diğer Buzluk" : "120",
+    "Üçüncü Buzluk" : "120",
+    "Diffiriz" : "200",
     "Bulaşık Makinası": "1800",
     "Kurutma Makinası": "3000",
     "Mikrodalga":"1200",
@@ -9,13 +12,23 @@ const esyalar = {
     "Kettle": "1200",
     "Şofben": "6000",
     "Klima": "3000",
+    "İki Klima (Toplam)": "6000",
+    "Üç Klima (Toplam)" : "9000",
+    "Dört Klima (Toplam)" : "12000",
     "Ütü": "2000",
     "Sebil": "100",
     "Serinlik": "50",
-    "LED Ampul" : "10",
+    "Bir LED Ampul" : "10",
+    "İki LED Ampul (Toplam)" : "20",
+    "Üç LED Ampul (Toplam)" : "30",
+    "Dört LED Ampul (Toplam)" : "40",
     "Normal Ampul" : "75",
+    "İki Normal Ampul (Toplam)" : "150",
+    "Üç Normal Ampul (Toplam)" : "225",
+    "Dört Normal Ampul (Toplam)" : "300",
     "Heater" : "3250",
     "Soba" : "750",
+    "İkinci Soba" : "750",
     "Hidrofor" : "650",
     "Fırın" : "3250",
     "Kahve Makinası" : "750",
@@ -48,11 +61,11 @@ for (e in esyalar){
     gundeKacSaat.max = "24";
     gundeKacSaat.value= "0";
     gundeKacSaat.className = "elems";
-    gundeKacSaat.step ="0.25";
+    gundeKacSaat.step ="1";
     gundeKacSaat.name = e;
     gundeKacSaat.id = e + "ranc";
     gundeKacSaat.oninput = function (){
-        var esyaToplam = this.value * esyalar[this.name] * document.getElementById(this.name + "ayda").value / 1000;
+        var esyaToplam = (this.value + (document.getElementById(this.name + "dakika").value / 60)) * esyalar[this.name] * document.getElementById(this.name + "ayda").value / 1000;
 
         document.getElementById(this.name +"kws").innerHTML = esyaToplam;
 
@@ -62,7 +75,27 @@ for (e in esyalar){
         toplaBak(0);
 
     }
-    
+
+    var gundeKacDakika = document.createElement("input");
+    gundeKacDakika.type ="number";
+    gundeKacDakika.min = "0";
+    gundeKacDakika.max = "59";
+    gundeKacDakika.value= "0";
+    gundeKacDakika.className = "elems";
+    gundeKacDakika.step ="1";
+    gundeKacDakika.name = e;
+    gundeKacDakika.id = e + "dakika";
+    gundeKacDakika.oninput = function (){
+        var esyaToplam = (document.getElementById(this.name + "ranc").value +  (this.value / 60)) * esyalar[this.name] * document.getElementById(this.name + "ayda").value / 1000;
+
+        document.getElementById(this.name +"kws").innerHTML = esyaToplam;
+
+        genelTuketim[this.name] = esyaToplam;
+        console.log(genelTuketim);
+
+        toplaBak(0);
+
+    }
     
     var aydaKacGun = document.createElement("input");
     aydaKacGun.type ="number";
@@ -74,7 +107,7 @@ for (e in esyalar){
     aydaKacGun.id = e + "ayda";
     aydaKacGun.value = "0";
     aydaKacGun.oninput = function (){
-        var esyaToplam = this.value * esyalar[this.name] * document.getElementById(this.name + "ranc").value / 1000;
+        var esyaToplam = this.value * esyalar[this.name] * (document.getElementById(this.name + "ranc").value + (document.getElementById(this.name + "dakika").value / 60)) / 1000;
 
         document.getElementById(this.name +"kws").innerHTML = esyaToplam;
         
@@ -98,9 +131,6 @@ for (e in esyalar){
             for(ee in genelTuketim){
                 toplamlari = Number(genelTuketim[ee]) + Number(toplamlari);
             }
-      
-
-        
           }else{
                 toplamlari = mm;
             }
@@ -185,6 +215,9 @@ for (e in esyalar){
     
     es.appendChild(esyaAdi);
     d.appendChild(gundeKacSaat);
+    d.append(" saat   ");
+    d.appendChild(gundeKacDakika);
+    d.append(" dakika ");
     g.appendChild(esyaToplamKws);
     o.appendChild(aydaKacGun);
     
