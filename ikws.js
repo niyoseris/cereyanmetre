@@ -74,36 +74,36 @@ function toplaBak(mm){
     }
 
     if(toplamlari <= 250){
-        fatura.innerHTML = ((toplamlari * 0.9873) + 55) * 1.1 + " TL";
+        fatura.innerHTML = ((toplamlari * 0.98) + 55) * 1.1 + " TL";
     }
     
     if(toplamlari >= 250 && toplamlari <= 500){
-    var ilk = 250 * 0.9873;
-    var ikinci = (toplamlari - 250) * 2.7;
+    var ilk = 250 * 0.98;
+    var ikinci = (toplamlari - 250) * 1.7;
         fatura.innerText = (Number(ilk) + Number(ikinci) + 55) * 1.1 + " TL";
     }
 
     if(toplamlari >= 500 && toplamlari <= 750){
-    var ilk = 250 * 0.9873;
-    var ikinci = 250 * 2.7;
-    var ucuncu = (toplamlari - 500) * 2.95;
+    var ilk = 250 * 0.98;
+    var ikinci = 250 * 1.7;
+    var ucuncu = (toplamlari - 500) * 2;
         fatura.innerText = (Number(ilk) + Number(ikinci) + Number(ucuncu) + 55) * 1.1 + " TL";
     }
 
     if(toplamlari >= 750 && toplamlari <= 1000){
-    var ilk = 250 * 0.9873;
-    var ikinci = 250 * 2.7;
-    var ucuncu = 250 * 2.95;
-    var dorduncu = (toplamlari - 750) * 3.25;
+    var ilk = 250 * 0.98;
+    var ikinci = 250 * 1.7;
+    var ucuncu = 250 * 2;
+    var dorduncu = (toplamlari - 750) * 2.25;
         fatura.innerText = (Number(ilk) + Number(ikinci) + Number(ucuncu) + Number (dorduncu) + 55) * 1.1 + " TL";
     
     }
     
     if(toplamlari >= 1000){
-    var ilk = 250 * 0.9873;
-    var ikinci = 250 * 2.7;
-    var ucuncu = 250 * 2.95;
-    var dorduncu = 250 * 3.25;
+    var ilk = 250 * 0.98;
+    var ikinci = 250 * 1.7;
+    var ucuncu = 250 * 2;
+    var dorduncu = 250 * 2.25;
     var besinci = (toplamlari - 1000) * 4;
         fatura.innerText = ((Number(ilk) + Number(ikinci) + Number(ucuncu) + Number (dorduncu) + Number (besinci)) * 1.1) + 55 + " TL";
     }
