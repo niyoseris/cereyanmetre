@@ -33,6 +33,13 @@ var genelTuketim = {};
 let t = document.createElement("table");
 var sel = document.getElementById("sel");
 
+var ilkKademe = parseFloat("0.9873");
+var ikinciKademe = parseFloat("2.7");
+var ucuncuKademe = parseFloat("2.95");
+var dorduncuKademe = parseFloat("3.25");
+var besinciKademe = parseFloat("4.0");
+
+
 toplam = 0;
 
 for (baslik of basliklar){
@@ -74,37 +81,37 @@ function toplaBak(mm){
     }
 
     if(toplamlari <= 250){
-        fatura.innerHTML = ((toplamlari * 0.98) + 55) * 1.1 + " TL";
+        fatura.innerHTML = ((toplamlari * ilkKademe) + 55) * 1.1 + " TL";
     }
     
     if(toplamlari >= 250 && toplamlari <= 500){
-    var ilk = 250 * 0.98;
-    var ikinci = (toplamlari - 250) * 1.7;
+    var ilk = 250 * ilkKademe;
+    var ikinci = (toplamlari - 250) * ikinciKademe;
         fatura.innerText = (Number(ilk) + Number(ikinci) + 55) * 1.1 + " TL";
     }
 
     if(toplamlari >= 500 && toplamlari <= 750){
-    var ilk = 250 * 0.98;
-    var ikinci = 250 * 1.7;
-    var ucuncu = (toplamlari - 500) * 2;
+    var ilk = 250 * ilkKademe;
+    var ikinci = 250 * ikinciKademe;
+    var ucuncu = (toplamlari - 500) * ucuncuKademe;
         fatura.innerText = (Number(ilk) + Number(ikinci) + Number(ucuncu) + 55) * 1.1 + " TL";
     }
 
     if(toplamlari >= 750 && toplamlari <= 1000){
-    var ilk = 250 * 0.98;
-    var ikinci = 250 * 1.7;
-    var ucuncu = 250 * 2;
-    var dorduncu = (toplamlari - 750) * 2.25;
+    var ilk = 250 * ilkKademe;
+    var ikinci = 250 * ikinciKademe;
+    var ucuncu = 250 * ucuncuKademe;
+    var dorduncu = (toplamlari - 750) * dorduncuKademe;
         fatura.innerText = (Number(ilk) + Number(ikinci) + Number(ucuncu) + Number (dorduncu) + 55) * 1.1 + " TL";
     
     }
     
     if(toplamlari >= 1000){
-    var ilk = 250 * 0.98;
-    var ikinci = 250 * 1.7;
-    var ucuncu = 250 * 2;
-    var dorduncu = 250 * 2.25;
-    var besinci = (toplamlari - 1000) * 4;
+    var ilk = 250 * ilkKademe;
+    var ikinci = 250 * ikinciKademe;
+    var ucuncu = 250 * ucuncuKademe;
+    var dorduncu = 250 * dorduncuKademe;
+    var besinci = (toplamlari - 1000) * besinciKademe;
         fatura.innerText = ((Number(ilk) + Number(ikinci) + Number(ucuncu) + Number (dorduncu) + Number (besinci)) * 1.1) + 55 + " TL";
     }
 
