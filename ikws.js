@@ -33,11 +33,11 @@ var genelTuketim = {};
 let t = document.createElement("table");
 var sel = document.getElementById("sel");
 
-var ilkKademe = parseFloat("2.87232");
-var ikinciKademe = parseFloat("5.9257");
-var ucuncuKademe = parseFloat("6.3714");
-var dorduncuKademe = parseFloat("6.9063");
-var besinciKademe = parseFloat("7.2730");
+var ilkKademe = parseFloat("2,6963");
+var ikinciKademe = parseFloat("5.5625");
+var ucuncuKademe = parseFloat("5.9810");
+var dorduncuKademe = parseFloat("6.4831");
+var besinciKademe = parseFloat("7.7383");
 var maktu = parseInt("85");
 
 
